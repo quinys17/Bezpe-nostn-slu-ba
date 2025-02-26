@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezpečnostní informační služba</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            background-color: #444;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+        }
+        section {
+            padding: 20px;
+        }
+        .admin-panel {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 300px;
+            z-index: 1000;
+        }
+        .admin-panel input, .admin-panel textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .admin-panel button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .admin-panel button:hover {
+            background-color: #555;
+        }
+        .show-panel-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .show-panel-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bezpečnostní informační služba</h1>
+</header>
+
+<nav>
+    <a href="#sekcia1">Sekcia 1</a>
+    <a href="#sekcia2">Sekcia 2</a>
+    <a href="#sekcia3">Sekcia 3</a>
+    <a href="#sekcia4">Sekcia 4</a>
+</nav>
+
+<section id="sekcia1">
+    <h2>Sekcia 1: Bezpečnostné Štatistiky</h2>
+    <p id="sekcia1-content">Sem bude možné pridať štatistiky.</p>
+</section>
+
+<section id="sekcia2">
+    <h2>Sekcia 2: Odkazy</h2>
+    <p id="sekcia2-content">Sem bude možné pridať odkazy.</p>
+</section>
+
+<section id="sekcia3">
+    <h2>Sekcia 3: Správy</h2>
+    <p id="sekcia3-content">Sem budú pridané nové správy.</p>
+</section>
+
+<section id="sekcia4">
+    <h2>Sekcia 4: Kontakty</h2>
+    <p id="sekcia4-content">Sem budú pridané kontaktné informácie.</p>
+</section>
+
+<!-- Administrátorský panel -->
+<div class="admin-panel" id="admin-panel">
+    <h3>Administrátorský panel</h3>
+    <label for="statistiky">Štatistiky pre Sekciu 1:</label>
+    <textarea id="statistiky" placeholder="Zadajte štatistiky pre sekciu 1..."></textarea>
+    <label for="odkazy">Odkazy pre Sekciu 2:</label>
+    <textarea id="odkazy" placeholder="Zadajte odkazy pre sekciu 2..."></textarea>
+    <label for="spravy">Správy pre Sekciu 3:</label>
+    <textarea id="spravy" placeholder="Zadajte správy pre sekciu 3..."></textarea>
+    <label for="kontakty">Kontakty pre Sekciu 4:</label>
+    <textarea id="kontakty" placeholder="Zadajte kontakty pre sekciu 4..."></textarea>
+    <button onclick="ulozit()">Uložiť zmeny</button>
+</div>
+
+<!-- Tlačidlo pre zobrazenie administrátorského panelu -->
+<button class="show-panel-button" onclick="toggleAdminPanel()">Zobraziť Admin Panel</button>
+
+<script>
+    // Funkcia na zobrazenie a skrytie administrátorského panelu
+    function toggleAdminPanel() {
+        const panel = document.getElementById('admin-panel');
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Funkcia na uloženie údajov a aktualizáciu sekcií
+    function ulozit() {
+        // Uloží text zadaný v administrátorskom paneli do sekcií
+        document.getElementById('sekcia1-content').textContent = document.getElementById('statistiky').value;
+        document.getElementById('sekcia2-content').textContent = document.getElementById('odkazy').value;
+        document.getElementById('sekcia3-content').textContent = document.getElementById('spravy').value;
+        document.getElementById('sekcia4-content').textContent = document.getElementById('kontakty').value;
+
+        // Skryje administrátorský panel po uložení
+        toggleAdminPanel();
+    }
+</script>
+
+</body>
+</html>
